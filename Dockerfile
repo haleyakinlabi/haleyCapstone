@@ -5,6 +5,7 @@ apt-get -y upgrade && \
 apt-get -y --allow-downgrades --allow-remove-essential --allow-change-held-packages install \
 build-essential \
 git \
+libpq-dev \
 nodejs \
 npm \
 sqlite3 \
@@ -19,8 +20,6 @@ bundle config set --global --without test
 # setup yarn
 RUN npm install -g yarn
 
-RUN echo hi
-
 # get application code
 RUN rm -rf /opt/haley-capstone
 RUN git clone --origin github --branch main --depth 1 https://github.com/wasatchtimpanogos/haleyCapstone.git /opt/haley-capstone
@@ -33,10 +32,10 @@ RUN bundle
 # prepare the environment
 ENV RAILS_ENV=production RAILS_LOG_TO_STDOUT=true RAILS_SERVE_STATIC_FILES=true
 
-#bin/rails db:create db:migrate && \
 # prepare and run the application
 CMD git pull --no-rebase github main && \
 yarn --ignore-engines && \
 bundle && \
 rm -f tmp/pids/server.pid && \
+bin/rails db:migrate && \
 bin/rails s --binding=0.0.0.0 --port=3000
