@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_01_12_233521) do
+ActiveRecord::Schema[7.0].define(version: 2023_01_12_234601) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -45,17 +45,30 @@ ActiveRecord::Schema[7.0].define(version: 2023_01_12_233521) do
   create_table "posts", force: :cascade do |t|
     t.bigint "user_id", null: false
     t.text "body", null: false
+    t.integer "like_count", default: 0, null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_posts_on_user_id"
+  end
+
+  create_table "user_connections", force: :cascade do |t|
+    t.bigint "leader_id", null: false
+    t.bigint "follower_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["leader_id", "follower_id"], name: "index_user_connections_on_leader_id_and_follower_id", unique: true
   end
 
   create_table "users", force: :cascade do |t|
     t.string "username", null: false
-    t.string "encrypted_password", null: false
+    t.string "password_digest", null: false
     t.string "email", null: false
-    t.string "image_url"
+    t.string "species", null: false
+    t.string "breed"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["email"], name: "index_users_on_email", unique: true
+    t.index ["username"], name: "index_users_on_username", unique: true
   end
 
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
