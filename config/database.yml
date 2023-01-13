@@ -23,6 +23,7 @@ default: &default
 
 development:
   <<: *default
+  sslmode: require
   url: <%= ENV["DATABASE_URL"] %>
 
   # The specified database role being used to connect to postgres.
@@ -81,4 +82,5 @@ test:
 #
 production:
   <<: *default
+  sslmode: require
   url: <%= ENV["DATABASE_URL"] %>
