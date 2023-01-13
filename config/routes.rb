@@ -1,11 +1,7 @@
 # frozen_string_literal: true
 
 Rails.application.routes.draw do
-  resources :user_connections
-  resources :posts
-  resources :users
-  # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
-
-  # Defines the root path route ("/")
-  # root "articles#index"
+  resources :users, defaults: {format: :json}
+  resources :posts, defaults: {format: :json}
+  root "users#index", defaults: {format: :json}
 end

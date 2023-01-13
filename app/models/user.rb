@@ -24,7 +24,9 @@ class User < ApplicationRecord
   before_validation :standardize_breed
 
   # scopes ....................................................................
+
   # additional config (i.e. accepts_nested_attribute_for etc...) ..............
+  accepts_nested_attributes_for :leaders
   has_secure_password
 
   # class methods .............................................................
