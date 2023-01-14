@@ -5,7 +5,7 @@ class CreatePosts < ActiveRecord::Migration[7.0]
     create_table :posts do |t|
       t.bigint :user_id, null: false
       t.text :body, null: false
-      t.integer :like_count, null: false, default: 0
+      t.integer :likes_count, null: false, default: 0
 
       t.timestamps
 
