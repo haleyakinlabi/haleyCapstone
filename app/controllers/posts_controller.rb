@@ -6,7 +6,7 @@ class PostsController < ApplicationController
   # GET /posts or /posts.json
   def index
     users = User.all
-    users = Current.user.leaders if params[:leaders].present?
+    users = (params[:feed] == "everyone") ? User.all : current_user.leaders
     users = users.where("users.username ~* ?", params[:username]) if params[:username].present?
     users = users.where("users.species ~* ?", params[:species]) if params[:species].present?
     users = users.where("users.breed ~* ?", params[:breed]) if params[:breed].present?

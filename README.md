@@ -2,6 +2,53 @@
 
 ## Haley's Capstone
 
+## API
+
+### Posts
+
+- Paginated Feed (requires authentication)
+
+    ```sh
+    curl -v -H "Authorization: Bearer ACCESS_TOKEN" http://localhost:3000/posts
+    ```
+
+  Filters
+
+  - `feed=[*leaders,everyone]` The feed to access (defaults to leaders)
+  - `username=QUERY` The username filter _(supports partial matches)_
+  - `species=QUERY` The species filter _(supports partial matches)_
+  - `breed=QUERY` The breed filter _(supports partial matches)_
+
+  Examples
+
+    ```sh
+    curl -v -H "Authorization: Bearer ACCESS_TOKEN" http://localhost:3000/posts?feed=everyone
+    curl -v -H "Authorization: Bearer ACCESS_TOKEN" http://localhost:3000/posts?species=dog
+    curl -v -H "Authorization: Bearer ACCESS_TOKEN" http://localhost:3000/posts?species=dog&breed=retriever
+    ```
+
+### Users
+
+SEE: https://github.com/Gokul595/api_guard
+
+- Sign Up
+
+    ```sh
+    curl -v -H "Content-Type: application/json" -d '{"username": "chance", "email":"chance@example.com","password":"password","password_confirmation":"password"}' http://localhost:3000/users/sign_up
+    ```
+
+- Sign In
+
+    ```sh
+    curl -v -X POST -H "Content-Type: application/json" -d '{"email":"chance@example.com","password":"password"}' http://localhost:3000/users/sign_in
+    ```
+
+- Sign Out
+
+    ```sh
+    curl -v -X POST -H "Authorization: Bearer ACCESS_TOKEN" -H "Content-Type: application/json" -d '{"email":"chance@example.com","password":"password"}' http://localhost:3000/users/sign_in
+    ```
+
 ## Hosted PostgreSQL
 
 https://neon.tech
