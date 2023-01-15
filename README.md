@@ -9,7 +9,7 @@
 - Paginated Feed (requires authentication)
 
     ```sh
-    curl -v -H "Authorization: Bearer ACCESS_TOKEN" http://localhost:3000/posts
+    curl -v -H "Authorization: Bearer ACCESS_TOKEN" https://haley-capstone.fly.dev/posts
     ```
 
   Filters
@@ -22,9 +22,9 @@
   Examples
 
     ```sh
-    curl -v -H "Authorization: Bearer ACCESS_TOKEN" http://localhost:3000/posts?feed=everyone
-    curl -v -H "Authorization: Bearer ACCESS_TOKEN" http://localhost:3000/posts?species=dog
-    curl -v -H "Authorization: Bearer ACCESS_TOKEN" http://localhost:3000/posts?species=dog&breed=retriever
+    curl -v -H "Authorization: Bearer ACCESS_TOKEN" https://haley-capstone.fly.dev/posts?feed=everyone
+    curl -v -H "Authorization: Bearer ACCESS_TOKEN" https://haley-capstone.fly.dev/posts?species=dog
+    curl -v -H "Authorization: Bearer ACCESS_TOKEN" https://haley-capstone.fly.dev/posts?species=dog&breed=retriever
     ```
 
 ### Users
@@ -34,7 +34,7 @@ SEE: https://github.com/Gokul595/api_guard
 - Sign Up
 
     ```sh
-    curl -v -H "Content-Type: application/json" -d '{"username": "chance", "email":"chance@example.com","password":"password","password_confirmation":"password"}' http://localhost:3000/users/sign_up
+    curl -v -H "Content-Type: application/json" -d '{"username": "chance", "email":"chance@example.com","password":"password","password_confirmation":"password"}' https://haley-capstone.fly.dev/users/sign_up
     ```
 
 - Sign In
@@ -46,7 +46,7 @@ SEE: https://github.com/Gokul595/api_guard
 - Sign Out
 
     ```sh
-    curl -v -X POST -H "Authorization: Bearer ACCESS_TOKEN" -H "Content-Type: application/json" -d '{"email":"chance@example.com","password":"password"}' http://localhost:3000/users/sign_in
+    curl -v -X POST -H "Authorization: Bearer ACCESS_TOKEN" -H "Content-Type: application/json" -d '{"email":"chance@example.com","password":"password"}' https://haley-capstone.fly.dev/users/sign_in
     ```
 
 ## Hosted PostgreSQL
