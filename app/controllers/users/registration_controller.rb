@@ -22,7 +22,7 @@ module Users
     private
 
     def sign_up_params
-      params.permit(:email, :username, :password, :password_confirmation)
+      params.permit(:email, :username, :password, :password_confirmation, :species, :breed, :image)
     end
   end
 end
