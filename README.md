@@ -4,7 +4,42 @@
 
 ## API
 
-### Posts
+### User(s) (noun / resource / URL)
+
+SEE: https://github.com/Gokul595/api_guard
+
+- Sign Up (user.create)
+
+    ```sh
+    curl -v -X POST -H "Content-Type: application/json" -d '{"username": "chance", "email":"chance@example.com","password":"password","password_confirmation":"password"}' https://haley-capstone.fly.dev/users/sign_up
+    ```
+
+    /users/sign_up (routes map this URL to registration.create)
+                                                 |         |
+                                                 |-noun    |-verb
+    ...
+    registration / sign_up (noun)
+    create (verb)
+
+- Sign In
+
+    ```sh
+    curl -v -X POST -H "Content-Type: application/json" -d '{"email":"chance@example.com","password":"password"}' https://haley-capstone.fly.dev/users/sign_in
+    ```
+
+    /users/sign_in (routes map this URL to authentication.create)
+                                                 |         |
+                                                 |-noun    |-verb
+    authentication / sign_in (noun)
+    create (verb)
+
+- Sign Out
+
+    ```sh
+    curl -v -X POST -H "Authorization: Bearer ACCESS_TOKEN" -H "Content-Type: application/json" -d '{"email":"chance@example.com","password":"password"}' https://haley-capstone.fly.dev/users/sign_in
+    ```
+
+### Post(s) (noun / resources / URL)
 
 - Paginated Feed (requires authentication)
 
@@ -25,28 +60,6 @@
     curl -v -H "Authorization: Bearer ACCESS_TOKEN" https://haley-capstone.fly.dev/posts?feed=everyone
     curl -v -H "Authorization: Bearer ACCESS_TOKEN" https://haley-capstone.fly.dev/posts?species=dog
     curl -v -H "Authorization: Bearer ACCESS_TOKEN" https://haley-capstone.fly.dev/posts?species=dog&breed=retriever
-    ```
-
-### Users
-
-SEE: https://github.com/Gokul595/api_guard
-
-- Sign Up
-
-    ```sh
-    curl -v -H "Content-Type: application/json" -d '{"username": "chance", "email":"chance@example.com","password":"password","password_confirmation":"password"}' https://haley-capstone.fly.dev/users/sign_up
-    ```
-
-- Sign In
-
-    ```sh
-    curl -v -X POST -H "Content-Type: application/json" -d '{"email":"chance@example.com","password":"password"}' http://localhost:3000/users/sign_in
-    ```
-
-- Sign Out
-
-    ```sh
-    curl -v -X POST -H "Authorization: Bearer ACCESS_TOKEN" -H "Content-Type: application/json" -d '{"email":"chance@example.com","password":"password"}' https://haley-capstone.fly.dev/users/sign_in
     ```
 
 ## Hosted PostgreSQL
