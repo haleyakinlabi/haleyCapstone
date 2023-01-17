@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 Rails.application.routes.draw do
-  api_guard_routes for: "users", controller: {
+  api_guard_routes for: "users", defaults: {format: :json}, controller: {
     registration: "users/registration",
     authentication: "users/authentication"
     # passwords: "users/passwords",
