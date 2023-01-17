@@ -17,7 +17,7 @@ class UserConnectionsController < ApplicationController
   end
 
   def destroy
-    @user_connection = current_user.leader_connections.find_by(leader_id: params[:leader_id])
+    @user_connection = current_user.leader_connections.find_by(leader_id: params[:id])
     @user_connection&.destroy
 
     respond_to do |format|
