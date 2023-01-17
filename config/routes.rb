@@ -9,6 +9,7 @@ Rails.application.routes.draw do
   }
 
   resources :users, defaults: {format: :json}
+  resources :user_connections, defaults: {format: :json}, only: [:create, :destroy], path: "followerships"
   resources :posts, defaults: {format: :json}
   root "users#index", defaults: {format: :json}
 end

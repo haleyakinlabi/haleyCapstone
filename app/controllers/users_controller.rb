@@ -5,7 +5,13 @@ class UsersController < ApplicationController
 
   # GET /users or /users.json
   def index
-    @users = User.all
+    users = (params[:feed] == "everyone") ? User.all : current_user.leaders
+    users = users.where("users.username ~* ?", params[:username]) if params[:username].present?
+    users = users.where("users.species ~* ?", params[:species]) if params[:species].present?
+    users = users.where("users.breed ~* ?", params[:breed]) if params[:breed].present?
+    users = users.includes(:image_attachment).order(id: :desc)
+
+    @pagy, @users = pagy(users)
   end
 
   # GET /users/1 or /users/1.json

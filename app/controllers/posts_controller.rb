@@ -5,14 +5,16 @@ class PostsController < ApplicationController
 
   # GET /posts or /posts.json
   def index
-    users = User.all
     users = (params[:feed] == "everyone") ? User.all : current_user.leaders
     users = users.where("users.username ~* ?", params[:username]) if params[:username].present?
     users = users.where("users.species ~* ?", params[:species]) if params[:species].present?
     users = users.where("users.breed ~* ?", params[:breed]) if params[:breed].present?
 
-    posts = Post.includes(:image_attachment, user: [:image_attachment])
-    posts = posts.where(user_id: users)
+    posts = Post.all
+      .where(user_id: users)
+      .includes(:image_attachment, user: [:image_attachment])
+      .order(id: :desc)
+
     @pagy, @posts = pagy(posts)
   end
 
