@@ -10,6 +10,8 @@ Rails.application.routes.draw do
 
   resources :users, defaults: {format: :json}
   resources :user_connections, defaults: {format: :json}, only: [:create, :destroy], path: "followerships"
-  resources :posts, defaults: {format: :json}
+  resources :posts, defaults: {format: :json} do
+    resource :likes, defaults: {format: :json}, only: [:create, :destroy]
+  end
   root "users#index", defaults: {format: :json}
 end
