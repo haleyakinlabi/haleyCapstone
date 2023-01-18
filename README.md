@@ -66,6 +66,13 @@ SEE: https://github.com/Gokul595/api_guard
     curl -v -H "Authorization: Bearer $ACCESS_TOKEN" https://haley-capstone.fly.dev/posts?species=dog&breed=retriever
     ```
 
+- Create Post (requires authentication)
+
+    ```sh
+    curl -v -X POST -H "Authorization: Bearer $ACCESS_TOKEN" -H "Content-Type: application/json" -d '{"body":"This is a post."}' http://localhost:3000/posts
+    curl -v -X POST -H "Authorization: Bearer $ACCESS_TOKEN" -H "Content-Type: application/json" -d '{"body":"This is a post."}' https://haley-capstone.fly.dev/posts
+    ```
+
 ### Users(s) (noun / resources / URL)
 
 - Paginated Feed (requires authentication)

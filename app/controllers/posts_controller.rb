@@ -1,6 +1,7 @@
 # frozen_string_literal: true
 
 class PostsController < ApplicationController
+  skip_before_action :verify_authenticity_token, only: [:create]
   before_action :set_post, only: %i[show edit update destroy]
 
   # GET /posts or /posts.json
@@ -33,7 +34,7 @@ class PostsController < ApplicationController
 
   # POST /posts or /posts.json
   def create
-    @post = Post.new(post_params)
+    @post = Post.new(post_params.merge(user: current_user))
 
     respond_to do |format|
       if @post.save
@@ -78,6 +79,6 @@ class PostsController < ApplicationController
 
   # Only allow a list of trusted parameters through.
   def post_params
-    params.fetch(:post, {})
+    params.permit(:body)
   end
 end
