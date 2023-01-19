@@ -22,6 +22,7 @@ class User < ApplicationRecord
   before_validation :standardize_email
   before_validation :standardize_species
   before_validation :standardize_breed
+  before_save :ensure_avatar_url
 
   # scopes ....................................................................
 
@@ -55,5 +56,9 @@ class User < ApplicationRecord
 
   def standardize_breed
     self.breed = breed.to_s.downcase.parameterize.strip
+  end
+
+  def ensure_avatar_url
+    self.avatar_url = "https://placedog.net/50/50?random" if avatar_url.blank?
   end
 end

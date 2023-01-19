@@ -11,8 +11,8 @@ SEE: https://github.com/Gokul595/api_guard
 - Sign Up (user.create)
 
     ```sh
-    curl -v -X POST -H "Content-Type: application/json" -d '{"username": "chance", "email":"chance@example.com","password":"password","password_confirmation":"password"}' http://localhost:3000/users/sign_up
-    curl -v -X POST -H "Content-Type: application/json" -d '{"username": "chance", "email":"chance@example.com","password":"password","password_confirmation":"password"}' https://haley-capstone.fly.dev/users/sign_up
+    curl -v -X POST -H "Content-Type: application/json" -d '{"username": "chance", "email":"chance@example.com","password":"password","password_confirmation":"password", "species": "dog", "breed": "bulldog", "avatar_url": ""}' http://localhost:3000/users/sign_up
+    curl -v -X POST -H "Content-Type: application/json" -d '{"username": "chance", "email":"chance@example.com","password":"password","password_confirmation":"password", "species": "dog", "breed": "bulldog", "avatar_url": ""}' https://haley-capstone.fly.dev/users/sign_up
     ```
 
     /users/sign_up (routes map this URL to registration.create)

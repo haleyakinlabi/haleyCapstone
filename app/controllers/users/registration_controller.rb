@@ -34,7 +34,15 @@ module Users
     private
 
     def sign_up_params
-      params.permit(:email, :username, :password, :password_confirmation, :species, :breed, :image)
+      params.permit(
+        :avatar_url,
+        :breed,
+        :email,
+        :password,
+        :password_confirmation,
+        :species,
+        :username
+      )
     end
   end
 end
