@@ -59,6 +59,6 @@ class User < ApplicationRecord
   end
 
   def ensure_avatar_url
-    self.avatar_url = "https://placedog.net/50/50?random" if avatar_url.blank?
+    self.avatar_url = "https://placedog.net/50/50?random=#{SecureRandom.urlsafe_base64}" if avatar_url.blank?
   end
 end

@@ -1,3 +1,3 @@
 # frozen_string_literal: true
 
-Pagy::DEFAULT[:items] = 10
+Pagy::DEFAULT[:items] = 100
